@@ -32,10 +32,12 @@ function updatePossibleNumbers(cellRow, cellColumn) {
 
 function removeNumbersInRow(cellRow, cellColumn) {
     for (let column = 0; column < puzzle[cellRow].length; column++) { // search each cell inside the current row
-        if((typeof(puzzle[cellRow][column])) == "number") { // if the cell contains a number:
+        if ((typeof(puzzle[cellRow][column])) == "number") { // if the cell contains a number:
             let possibleNumbers = puzzle[cellRow][cellColumn].possibleNumbers; // simplified for readability
             let index = possibleNumbers.indexOf(puzzle[cellRow][column]); // simplified for readability
-            possibleNumbers.splice(index, 1); // remove the number from possibe numbers
+            if (index > -1) { // if the number is found in "possibleNumbers"
+                possibleNumbers.splice(index, 1); // remove the number from possibe numbers
+            }
         }
     }
 }
