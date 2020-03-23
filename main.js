@@ -37,6 +37,7 @@ function solvePuzzle(){
 function updatePossibleNumbers(cellRow, cellColumn) {
     removeNumbersInRow(cellRow, cellColumn); // remove numbers in row from possible numbers
     removeNumbersInColumn(cellRow, cellColumn); // remove numbers in column from possible numbers
+    removeNumbersInNonet(cellRow, cellColumn); // remove numbers in column from possible numbers
 }
 
 function removeNumbersInRow(cellRow, cellColumn) {
@@ -52,8 +53,8 @@ function removeNumbersInRow(cellRow, cellColumn) {
 }
 
 function removeNumbersInColumn(cellRow, cellColumn) {
-    for (let row = 0; row < puzzle.length; row++) { //search each cell in the current column
-        if (typeof(puzzle[row][cellColumn]) == "number") {
+    for (let row = 0; row < puzzle.length; row++) { // search each cell in the current column
+        if (typeof(puzzle[row][cellColumn]) == "number") { // if the cell contains a number
             let possibleNumbers = puzzle[cellRow][cellColumn].possibleNumbers; // simplified for readability
             let index = possibleNumbers.indexOf(puzzle[row][cellColumn]); // simplified for readability
             if (index > -1) { // if the number is found in "possibleNumbers"
@@ -63,4 +64,130 @@ function removeNumbersInColumn(cellRow, cellColumn) {
     }
 }
 
-solvePuzzle(); //run
+function removeNumbersInNonet(cellRow, cellColumn) {
+    if (0 <= cellRow && cellRow <= 2) { // if the current cell is in the top 3 rows
+        if (0 <= cellColumn && cellColumn <= 2) { // if the current cell is in the left 3 columns
+            for (let row = 0; row <= 2; row++) { // for each row in nonet
+                for (let column = 0; column <= 2; column++) { // for each column in nonet
+                    if (typeof(puzzle[row][column]) == "number") { // if cell contains number
+                        let possibleNumbers = puzzle[cellRow][cellColumn].possibleNumbers; // simplified for readability
+                        let index = possibleNumbers.indexOf(puzzle[row][column]); // simplified for readability
+                        if (index > -1) { // if the number is found in "possibleNumbers"
+                            possibleNumbers.splice(index, 1); // remove the number from possibe numbers
+                        }
+                    }
+                }
+            }
+        }
+        else if (3 <= cellColumn && cellColumn <= 5) { // if the current cell is in the middle 3 columns
+            for (let row = 0; row <= 2; row++) { // for each row in nonet
+                for (let column = 3; column <= 5; column++) { // for each column in nonet
+                    if (typeof(puzzle[row][column]) == "number") { // if cell contains number
+                        let possibleNumbers = puzzle[cellRow][cellColumn].possibleNumbers; // simplified for readability
+                        let index = possibleNumbers.indexOf(puzzle[row][column]); // simplified for readability
+                        if (index > -1) { // if the number is found in "possibleNumbers"
+                            possibleNumbers.splice(index, 1); // remove the number from possibe numbers
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            for (let row = 0; row <= 2; row++) {  // for each row in nonet
+                for (let column = 6; column <= 8; column++) { // for each column in nonet
+                    if (typeof(puzzle[row][column]) == "number") { // if cell contains number
+                        let possibleNumbers = puzzle[cellRow][cellColumn].possibleNumbers; // simplified for readability
+                        let index = possibleNumbers.indexOf(puzzle[row][column]); // simplified for readability
+                        if (index > -1) { // if the number is found in "possibleNumbers"
+                            possibleNumbers.splice(index, 1); // remove the number from possibe numbers
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if (3 <= cellRow && cellRow <= 5) { // if the current cell is in the middle 3 rows
+        if (0 <= cellColumn && cellColumn <= 2) { // if the current cell is in the middle 3 columns
+            for (let row = 3; row <= 5; row++) { // for each row in nonet
+                for (let column = 0; column <= 2; column++) { // for each column in nonet
+                    if (typeof(puzzle[row][column]) == "number") { // if cell contains number
+                        let possibleNumbers = puzzle[cellRow][cellColumn].possibleNumbers; // simplified for readability
+                        let index = possibleNumbers.indexOf(puzzle[row][column]); // simplified for readability
+                        if (index > -1) { // if the number is found in "possibleNumbers"
+                            possibleNumbers.splice(index, 1); // remove the number from possibe numbers
+                        }
+                    }
+                }
+            }
+        }
+        else if (3 <= cellColumn && cellColumn <= 5) { // if the current cell is in the middle 3 columns
+            for (let row = 3; row <= 5; row++) { // for each row in nonet
+                for (let column = 3; column <= 5; column++) { // for each column in nonet
+                    if (typeof(puzzle[row][column]) == "number") { // if cell contains number
+                        let possibleNumbers = puzzle[cellRow][cellColumn].possibleNumbers; // simplified for readability
+                        let index = possibleNumbers.indexOf(puzzle[row][column]); // simplified for readability
+                        if (index > -1) { // if the number is found in "possibleNumbers"
+                            possibleNumbers.splice(index, 1); // remove the number from possibe numbers
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            for (let row = 3; row <= 5; row++) {  // for each row in nonet
+                for (let column = 6; column <= 8; column++) { // for each column in nonet
+                    if (typeof(puzzle[row][column]) == "number") { // if cell contains number
+                        let possibleNumbers = puzzle[cellRow][cellColumn].possibleNumbers; // simplified for readability
+                        let index = possibleNumbers.indexOf(puzzle[row][column]); // simplified for readability
+                        if (index > -1) { // if the number is found in "possibleNumbers"
+                            possibleNumbers.splice(index, 1); // remove the number from possibe numbers
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else {
+        if (0 <= cellColumn && cellColumn <= 2) { // if the current cell is in the middle 3 columns
+            for (let row = 6; row <= 8; row++) { // for each row in nonet
+                for (let column = 0; column <= 2; column++) { // for each column in nonet
+                    if (typeof(puzzle[row][column]) == "number") { // if cell contains number
+                        let possibleNumbers = puzzle[cellRow][cellColumn].possibleNumbers; // simplified for readability
+                        let index = possibleNumbers.indexOf(puzzle[row][column]); // simplified for readability
+                        if (index > -1) { // if the number is found in "possibleNumbers"
+                            possibleNumbers.splice(index, 1); // remove the number from possibe numbers
+                        }
+                    }
+                }
+            }
+        }
+        else if (3 <= cellColumn && cellColumn <= 5) { // if the current cell is in the middle 3 columns
+            for (let row = 6; row <= 8; row++) { // for each row in nonet
+                for (let column = 3; column <= 5; column++) { // for each column in nonet
+                    if (typeof(puzzle[row][column]) == "number") { // if cell contains number
+                        let possibleNumbers = puzzle[cellRow][cellColumn].possibleNumbers; // simplified for readability
+                        let index = possibleNumbers.indexOf(puzzle[row][column]); // simplified for readability
+                        if (index > -1) { // if the number is found in "possibleNumbers"
+                            possibleNumbers.splice(index, 1); // remove the number from possibe numbers
+                        }
+                    }
+                }
+            }
+        }
+        else {
+            for (let row = 6; row <= 8; row++) { // for each row in nonet
+                for (let column = 6; column <= 8; column++) { // for each column in nonet
+                    if (typeof(puzzle[row][column]) == "number") { // if cell contains number
+                        let possibleNumbers = puzzle[cellRow][cellColumn].possibleNumbers; // simplified for readability
+                        let index = possibleNumbers.indexOf(puzzle[row][column]); // simplified for readability
+                        if (index > -1) { // if the number is found in "possibleNumbers"
+                            possibleNumbers.splice(index, 1); // remove the number from possibe numbers
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+solvePuzzle(); // run
